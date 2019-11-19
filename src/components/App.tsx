@@ -1,9 +1,13 @@
 import React from "react";
 import { Reset } from "styled-reset";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-import theme from "../theme";
+import theme from "../styles/theme";
 
 import Calendar from "./Calendar";
+
+const CalendarWrapper = styled.section`
+  padding: 10px;
+`;
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -23,7 +27,9 @@ const App: React.FC = () => (
     <Reset />
     <GlobalStyle />
     <Header>Color Calendar</Header>
-    <Calendar />
+    <CalendarWrapper>
+      <Calendar />
+    </CalendarWrapper>
   </ThemeProvider>
 );
 

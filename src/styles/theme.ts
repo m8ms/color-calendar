@@ -5,7 +5,12 @@ export default {
   secondaryColorSoft: "rgba(167, 138, 127, 1)",
   neutralColor: "rgba(231, 215, 193, 1)",
 
-  textOnPrimaryColor: "rgba(255,255,255, .7)",
+  darkBorderColor: "rgb(136, 136, 136)",
+
+  darkHighlightBg: "rgba(0, 0, 0, .1)",
+
+  textOnPrimaryColor: "rgba(255, 255, 255, .7)",
+  textDimmedColor: "rgba(0, 0, 0, .3)",
 
   mainFont: "'Montserrat', sans-serif"
 };
