@@ -4,6 +4,10 @@ type SimpleDate = {
   d: number;
 };
 
+type Holidays = {
+  [key: string]: string;
+};
+
 type Color = {
   hex: string;
   name: string;
@@ -11,4 +15,8 @@ type Color = {
 
 interface IndexedProps {
   index: number;
+}
+
+interface HolidaysMap {
+  [key: string]: Holidays;
 }

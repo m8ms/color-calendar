@@ -10,38 +10,18 @@ const Wrapper = styled.section`
   font-size: 14px;
 `;
 
-interface IFCalendarContext {
-  today: SimpleDate;
-}
-
-export const CalendarContext = React.createContext<IFCalendarContext>(null);
-
-interface CalendarProps {
-  year?: number;
-}
-
-const Calendar: React.FC<CalendarProps> = ({
-  year = new Date().getFullYear()
-}) => {
-  const now = new Date();
-  const today: SimpleDate = {
-    y: now.getFullYear(),
-    m: now.getMonth(),
-    d: now.getDate()
-  };
+const Calendar: React.FC = () => {
   const months: React.ReactNodeArray = [];
 
   for (let i = 0; i < 12; i++) {
-    months.push(<CalendarMonth key={i} monthIndex={i} year={year} />);
+    months.push(<CalendarMonth key={i} monthIndex={i} />);
   }
 
   return (
     <Wrapper>
-      <CalendarContext.Provider value={{ today }}>
-        <CalendarHeader />
-        <WeekendColumns />
-        {months}
-      </CalendarContext.Provider>
+      <CalendarHeader />
+      <WeekendColumns />
+      {months}
     </Wrapper>
   );
 };

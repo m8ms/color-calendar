@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { lastDayOfMonth } from "date-fns";
-import { CalendarContext } from "../index";
+import { useSelector } from "react-redux";
 import { StyledDayCell } from "./DayCells.styled";
+import { todaySelector } from "../../../store/selectors/calendarUiSelectors";
 
 const isToday = (date: Date, day: number, today: SimpleDate): boolean => {
   const { d, m, y } = today;
@@ -16,7 +17,7 @@ const DayCells: React.FC<DayCellsProps> = ({ month }) => {
   const monthLength: number = lastDayOfMonth(month).getDate();
   const weekdayOffset: number = month.getDay();
   const cells: React.ReactNodeArray = [];
-  const { today } = useContext(CalendarContext);
+  const today = useSelector(todaySelector);
 
   for (let i = 0; i < monthLength; i++) {
     cells.push(

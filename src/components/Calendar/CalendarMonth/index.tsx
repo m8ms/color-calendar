@@ -5,12 +5,11 @@ import { StyledMonthLabel } from "./CalendarMonth.styled";
 
 interface CalendarMonthProps {
   monthIndex: number;
-  year: number;
 }
 
-const CalendarMonth: React.FC<CalendarMonthProps> = ({ monthIndex, year }) => (
+const CalendarMonth: React.FC<CalendarMonthProps> = ({ monthIndex }) => (
   <>
-    <CalendarStripe monthIndex={monthIndex} year={year} />
+    <CalendarStripe monthIndex={monthIndex} />
     <StyledMonthLabel index={monthIndex}>
       {enGB.localize.month(monthIndex)}
     </StyledMonthLabel>

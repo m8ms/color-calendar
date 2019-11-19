@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { getSundayBg } from "../../../utils";
-import { CALENDAR_PADDING } from "../../../styles/consts";
+import { CALENDAR_PADDING, ZINDEX } from "../../../styles/consts";
 
 const StyledColumn = styled.div<IndexedProps>`
   grid-column: ${({ index }) => `${index * 7 + 8} / span 1`};
@@ -16,5 +16,5 @@ export const StyledWeekendColumn = styled(StyledColumn)`
 export const StyledDottedLine = styled(StyledColumn)`
   border-right: dotted 1px black;
   pointer-events: none;
-  z-index: 1;
+  z-index: ${ZINDEX.CALENDAR_GRID};
 `;
