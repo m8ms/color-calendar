@@ -1,9 +1,3 @@
-type SimpleDate = {
-  y: number;
-  m: number;
-  d: number;
-};
-
 type Holidays = {
   [key: string]: string;
 };

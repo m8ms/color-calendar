@@ -6,16 +6,23 @@ import { setYear } from "../../store/actions/calendarUiActions";
 import { SelectWrapper, Wrapper } from "./CalendarToolbar.styled";
 import reactSelectTheme from "../../styles/reactSelectTheme";
 
-const calendarOptions = [
-  { value: 2019, label: "2019" },
-  { value: 2020, label: "2020" },
-  { value: 2021, label: "2021" }
-];
+type YearSelectOption = {
+  value: number;
+  label: string;
+};
+
+const calendarOptions: YearSelectOption[] = [];
+
+for (let i = 2019; i < 2051; i++) {
+  calendarOptions.push({ value: i, label: i.toString() });
+}
 
 const CalendarToolbar: React.FC = () => {
   const dispatch = useDispatch();
   const year: number = useSelector(selectedYearSelector);
-  const selectedValue = calendarOptions.find(({ value }) => value === year);
+  const selectedValue: YearSelectOption = calendarOptions.find(
+    ({ value }) => value === year
+  );
 
   const onChange = useCallback(
     ({ value }) => {

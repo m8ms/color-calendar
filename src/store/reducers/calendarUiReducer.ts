@@ -1,16 +1,13 @@
 import { Reducer } from "react";
 import { handleActions } from "redux-actions";
 import { setYear } from "../actions/calendarUiActions";
-import { getSimpleToday } from "../../utils";
 
 interface CalendarUiState {
   selectedYear: number;
-  today: SimpleDate;
 }
 
 const initialState: CalendarUiState = {
-  selectedYear: new Date().getFullYear(),
-  today: getSimpleToday()
+  selectedYear: new Date().getFullYear()
 };
 
 const calendarUiReducer: Reducer<CalendarUiState, any> = handleActions<any>(

@@ -8,5 +8,7 @@ const devtools = () =>
   // @ts-ignore
   window.__REDUX_DEVTOOLS_EXTENSION__();
 
-// @ts-ignore
-export default createStore(rootReducer, devtools());
+const store = createStore(rootReducer, devtools());
+
+export const getState = () => store.getState();
+export default store;
