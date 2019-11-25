@@ -1,5 +1,6 @@
 import React from "react";
 import { Reset } from "styled-reset";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
@@ -30,11 +31,22 @@ const App: React.FC = () => (
     <Provider store={store}>
       <Reset />
       <GlobalStyle />
-      <Header>Color Calendar</Header>
-      <CalendarWrapper>
-        <CalendarToolbar />
-        <Calendar />
-      </CalendarWrapper>
+      <BrowserRouter>
+        <Header>Color Calendar</Header>
+        <Route path="/c/:folkId?">
+          <CalendarWrapper>
+            <CalendarToolbar />
+            <Calendar />
+          </CalendarWrapper>
+        </Route>
+        <Route path="/" exact>
+          <Redirect
+            to={{
+              pathname: "/c/"
+            }}
+          />
+        </Route>
+      </BrowserRouter>
     </Provider>
   </ThemeProvider>
 );

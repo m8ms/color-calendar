@@ -8,6 +8,7 @@ export const StyledMonthLabel = styled.div<IndexedProps>`
   height: 28px;
   margin-left: -${CALENDAR_PADDING};
   padding-left: ${CALENDAR_PADDING};
+  padding-right: ${CALENDAR_PADDING};
   display: flex;
   align-items: center;
   div:hover + & {

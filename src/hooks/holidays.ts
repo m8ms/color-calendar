@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectedYearSelector } from "../store/selectors/calendarUiSelectors";
 import { holidaysSelector } from "../store/selectors/holidaysSelectors";
-import { getHolidays } from "../api";
+import { getHolidays } from "../api/holidays";
 import { setHolidays } from "../store/actions/holidaysActions";
 
 export const useHolidaysFetchAndDispatch = (): Holidays => {
