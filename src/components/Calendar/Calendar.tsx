@@ -5,6 +5,7 @@ import CalendarMonth from "./CalendarMonth";
 import WeekendColumns from "./WeekendColumns";
 import { useHolidaysFetchAndDispatch } from "../../hooks/holidays";
 import { CALENDAR_WIDTH } from "./calendar-params";
+import { useGetOrFetchCurrentFolkColors } from "../../hooks/folks";
 
 const Wrapper = styled.section`
   display: grid;
@@ -15,6 +16,7 @@ const Wrapper = styled.section`
 const CalendarContainer: React.FC = () => {
   const months: React.ReactNodeArray = [];
   useHolidaysFetchAndDispatch();
+  useGetOrFetchCurrentFolkColors();
 
   for (let i = 0; i < 12; i++) {
     months.push(<CalendarMonth key={i} monthIndex={i} />);

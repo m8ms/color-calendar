@@ -1,12 +1,12 @@
 import React from "react";
-import Select from "react-select";
 import {
   FolkSelectWrapper,
   SelectWrapper,
   Wrapper
 } from "./CalendarToolbar.styled";
-import reactSelectTheme from "../../styles/reactSelectTheme";
+import ColorsSelect from "../ColorsSelect";
 import { findSelectValue } from "../../utils";
+import ThemedSelect from "../ThemedSelect";
 
 const yearSelectOptions: SelectOption[] = [];
 
@@ -44,21 +44,12 @@ const CalendarToolbarUI: React.FC<CalendarToolbarUIProps> = ({
   );
   return (
     <Wrapper>
-      <SelectWrapper>
-        <Select
-          options={yearSelectOptions}
-          autosize
-          theme={reactSelectTheme}
-          isSearchable={false}
-          value={selectedYear}
-          onChange={onYearSelect}
-        />
-      </SelectWrapper>
+      <YearSelect value={selectedYear} onChange={onYearSelect} />
+      <ColorsSelect />
       <FolkSelectWrapper>
-        <Select
+        <ThemedSelect
           options={folksOptions}
           autosize
-          theme={reactSelectTheme}
           onChange={onFolkSelect}
           value={selectedFolk}
         />

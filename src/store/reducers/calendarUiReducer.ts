@@ -1,13 +1,15 @@
 import { Reducer } from "react";
 import { handleActions } from "redux-actions";
-import { setYear } from "../actions/calendarUiActions";
+import { setColor, setYear } from "../actions/calendarUiActions";
 
 interface CalendarUiState {
   selectedYear: number;
+  selectedColor: Color | null;
 }
 
 const initialState: CalendarUiState = {
-  selectedYear: new Date().getFullYear()
+  selectedYear: new Date().getFullYear(),
+  selectedColor: null
 };
 
 const calendarUiReducer: Reducer<CalendarUiState, any> = handleActions<any>(
@@ -19,6 +21,15 @@ const calendarUiReducer: Reducer<CalendarUiState, any> = handleActions<any>(
       return {
         ...state,
         selectedYear: action.payload
+      };
+    },
+    [`${setColor}`]: (state, action: ReturnType<typeof setColor>) => {
+      if (state.selectedColor === action.payload) {
+        return state;
+      }
+      return {
+        ...state,
+        selectedColor: action.payload
       };
     }
   },

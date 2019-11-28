@@ -1,9 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-interface DayCellProps {
+interface StyledDayCellProps {
   isHoliday: boolean;
   isToday: boolean;
+  isEditable: boolean;
+  color: string;
 }
 
 export const isTodayCss = css`
@@ -22,14 +24,21 @@ export const isTodayCss = css`
   }
 `;
 
-export const StyledDayCell = styled.div<DayCellProps>`
+export const StyledDayCell = styled.div<StyledDayCellProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  ${({ isEditable }) =>
+    isEditable &&
+    css`
+      cursor: pointer;
+    `};
   color: ${({ theme }) => theme.textDimmedColor};
-  background: ${({ isHoliday, theme }) =>
-    isHoliday ? theme.darkHighlightBg : "transparent"};
+  background: ${({ isHoliday, theme, color }) => {
+    if (color) return color;
+    return isHoliday ? theme.darkHighlightBg : "transparent";
+  }};
 
   ${({ isToday }) => isToday && isTodayCss}
 `;

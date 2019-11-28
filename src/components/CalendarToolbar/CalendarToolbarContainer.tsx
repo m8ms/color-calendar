@@ -6,7 +6,7 @@ import { setYear } from "../../store/actions/calendarUiActions";
 import CalendarToolbarUI from "./CalendarToolbarUI";
 import { useGetOrFetchFolks } from "../../hooks/folks";
 
-const CalendarToolbar: React.FC = () => {
+const CalendarToolbarContainer: React.FC = () => {
   const dispatch = useDispatch();
   const year: number = useSelector(selectedYearSelector);
   const folks: Folk[] | null = useGetOrFetchFolks();
@@ -32,4 +32,4 @@ const CalendarToolbar: React.FC = () => {
   );
 };
 
-export default CalendarToolbar;
+export default CalendarToolbarContainer;

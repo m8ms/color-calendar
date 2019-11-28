@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectedYearSelector } from "../store/selectors/calendarUiSelectors";
 import { holidaysSelector } from "../store/selectors/holidaysSelectors";
-import { getHolidays } from "../api/holidays";
+import { getHolidays, HolidaysResponseIF } from "../api/holidays";
 import { setHolidays } from "../store/actions/holidaysActions";
+import { fetchAndDispatch } from "../utils";
 
 export const useHolidaysFetchAndDispatch = (): Holidays => {
   const year = useSelector(selectedYearSelector);
@@ -12,10 +13,11 @@ export const useHolidaysFetchAndDispatch = (): Holidays => {
 
   useEffect(() => {
     if (!holidays) {
-      (async () => {
-        const h: Holidays = await getHolidays(year);
-        dispatch(setHolidays({ [year.toString()]: h.data }));
-      })();
+      fetchAndDispatch(
+        () => getHolidays(year),
+        data => setHolidays({ [year.toString()]: data }),
+        dispatch
+      );
     }
   }, [year, holidays]);
 

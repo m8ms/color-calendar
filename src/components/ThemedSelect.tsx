@@ -1,6 +1,8 @@
-import theme from "./theme";
+import Select from "react-select";
+import React from "react";
+import theme from "../styles/theme";
 
-export default rsTheme => ({
+const reactSelectTheme = rsTheme => ({
   ...rsTheme,
   borderRadius: 0,
   colors: {
@@ -16,3 +18,5 @@ export default rsTheme => ({
     menuGutter: 4
   }
 });
+
+export default props => <Select theme={reactSelectTheme} {...props} />;

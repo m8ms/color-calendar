@@ -14,3 +14,11 @@ export default {
 
   mainFont: "'Montserrat', sans-serif"
 };
+
+const x = [
+  // {"name": "vacation", "hex": "#54b7bf"},
+  // {"name": "sick leave", "hex": "#bf4342"},
+  // {"name": "home office", "hex": "#735751"},
+  // {"name": "ill dog leave", "hex": "#5054cf"},
+  // {"name": "business travel", "hex": "#a78a7f"}
+];

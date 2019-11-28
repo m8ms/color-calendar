@@ -1,5 +1,11 @@
 import { apiGet } from "./common";
 
-export function getHolidays(year: number | string): Promise<Holidays> {
+export interface HolidaysResponseIF {
+  data: Holidays;
+}
+
+export function getHolidays(
+  year: number | string
+): Promise<HolidaysResponseIF> {
   return apiGet("/holidays/" + year);
 }

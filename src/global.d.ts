@@ -8,9 +8,30 @@ type Folk = {
   colors: { [key: string]: Color } | null;
 };
 
+type RawFolk = {
+  _id: string;
+  name: string;
+  colors: { [key: string]: Color } | null;
+};
+
 type Color = {
+  id: string;
   hex: string;
   name: string;
+};
+
+type RawData = {
+  _id: string;
+};
+
+type RawColor = {
+  _id: string;
+  hex: string;
+  name: string;
+};
+
+type ColorMap = {
+  [key: string]: Color;
 };
 
 type SelectOption = {
@@ -18,14 +39,18 @@ type SelectOption = {
   label: string;
 };
 
-interface IndexedProps {
+type IndexedProps = {
   index: number;
-}
+};
 
-interface HolidaysMap {
+type HolidaysMap = {
   [key: string]: Holidays;
-}
+};
 
-interface FolksMap {
+type FolksMap = {
   [key: string]: Folk;
-}
+};
+
+type ColorsPerFolkMap = {
+  [key: string]: ColorMap;
+};
