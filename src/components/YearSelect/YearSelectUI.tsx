@@ -1,6 +1,6 @@
-import { SelectWrapper } from "../CalendarToolbar/CalendarToolbar.styled";
-import ThemedSelect from "../ThemedSelect";
 import React from "react";
+import ThemedSelect from "../ThemedSelect";
+import { SelectWrapper } from "../../styles/common.styled";
 
 interface YearSelectUIProps {
   value: SelectOption;
@@ -8,7 +8,7 @@ interface YearSelectUIProps {
   onChange: (item: SelectOption) => any;
 }
 
-const YearSelect: React.FC<YearSelectUIProps> = ({
+const YearSelectUI: React.FC<YearSelectUIProps> = ({
   value,
   onChange,
   options
@@ -23,3 +23,5 @@ const YearSelect: React.FC<YearSelectUIProps> = ({
     />
   </SelectWrapper>
 );
+
+export default YearSelectUI;

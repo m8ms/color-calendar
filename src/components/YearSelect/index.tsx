@@ -1,2 +1,2 @@
-import ColorsSelect from "./ColorsSelectContainer";
-export default ColorsSelect;
+import YearSelect from "./YearSelectContainer";
+export default YearSelect;

@@ -1,9 +1,19 @@
 import React, { useCallback } from "react";
-import YearSelectUI from "./ColorsSelectUI";
+import YearSelectUI from "./YearSelectUI";
 import { useSelector, useDispatch } from "react-redux";
 import { useColorsFetchAndDispatch } from "../../hooks/colors";
-import { currentColorSelector } from "../../store/selectors/calendarUiSelectors";
-import { setColor } from "../../store/actions/calendarUiActions";
+import {
+  currentColorSelector,
+  selectedYearSelector
+} from "../../store/selectors/calendarUiSelectors";
+import { setColor, setYear } from "../../store/actions/calendarUiActions";
+import { findSelectValue } from "../../utils";
+
+const yearSelectOptions: SelectOption[] = [];
+
+for (let i = 2019; i < 2051; i++) {
+  yearSelectOptions.push({ value: i, label: i.toString() });
+}
 
 const mapToOptions = ({ id, name, hex }) => ({
   label: { name, hex },
@@ -11,23 +21,19 @@ const mapToOptions = ({ id, name, hex }) => ({
 });
 
 const YearSelectContainer: React.FC = () => {
-  const colors = useColorsFetchAndDispatch() || [];
-  const colorsOptions = colors.map(mapToOptions);
-  const currentColor = useSelector(currentColorSelector);
   const dispatch = useDispatch();
-  const currentValue = currentColor
-    ? colorsOptions.find(({ value }) => value === currentColor.id)
-    : null;
 
-  const onChange = ({ value }) => {
-    const color = colors.find(({ id }) => id === value);
-    dispatch(setColor(color));
-  };
+  const year: number = useSelector(selectedYearSelector);
+  const selectedYear: SelectOption = findSelectValue(yearSelectOptions, year);
+
+  const onChange = useCallback(({ value }) => {
+    dispatch(setYear(value));
+  }, []);
 
   return (
     <YearSelectUI
-      options={colorsOptions}
-      value={currentValue}
+      options={yearSelectOptions}
+      value={selectedYear}
       onChange={onChange}
     />
   );
